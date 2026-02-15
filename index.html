@@ -1,13 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <title>TitanEAM - Enterprise Asset Management</title>
 
     <!-- PWA Meta Tags -->
-    <meta name="description" content="TitanEAM - نظام متكامل لإدارة الأصول المؤسسية | Enterprise Asset Management Platform">
+    <meta name="description"
+        content="TitanEAM - نظام متكامل لإدارة الأصول المؤسسية | Enterprise Asset Management Platform">
     <meta name="theme-color" content="#0f172a">
     <meta name="background-color" content="#0f172a">
     <meta name="color-scheme" content="light">
@@ -43,110 +44,81 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <style>
-        body { 
+        body {
             font-family: 'IBM Plex Sans Arabic', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             /* iOS safe area support */
             padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         }
-        .font-mono { font-family: 'JetBrains Mono', monospace; }
-        
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
         /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-        
-        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); }
-        .card-shadow { box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.05); }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+        }
+
+        .card-shadow {
+            box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.05);
+        }
 
         @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
         }
-        
+
         @keyframes scan {
-            0% { transform: translateY(-100%); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(100%); opacity: 0; }
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
         }
 
         .animate-scan {
             animation: scan 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         }
 
-        /* PWA Splash Screen */
-        #pwa-splash {
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            transition: opacity 0.5s ease-out;
-        }
-        #pwa-splash.loaded {
-            opacity: 0;
-            pointer-events: none;
-        }
-        #pwa-splash .logo {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #3b82f6, #6366f1);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.3);
-            animation: pulse-logo 2s ease-in-out infinite;
-        }
-        @keyframes pulse-logo {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        #pwa-splash h1 {
-            color: white;
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-        }
-        #pwa-splash p {
-            color: #3b82f6;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            margin-top: 4px;
-        }
-        #pwa-splash .loader {
-            margin-top: 40px;
-            width: 40px;
-            height: 3px;
-            background: rgba(59, 130, 246, 0.2);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-        #pwa-splash .loader::after {
-            content: '';
-            display: block;
-            width: 50%;
-            height: 100%;
-            background: #3b82f6;
-            border-radius: 3px;
-            animation: loading 1s ease-in-out infinite;
-        }
-        @keyframes loading {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(300%); }
-        }
+
 
         /* Standalone mode adjustments */
         @media all and (display-mode: standalone) {
@@ -154,6 +126,7 @@
                 -webkit-user-select: none;
                 user-select: none;
             }
+
             /* Prevent pull-to-refresh on iOS */
             html {
                 overscroll-behavior-y: contain;
@@ -161,7 +134,7 @@
         }
     </style>
 
-<script type="importmap">
+    <script type="importmap">
 {
   "imports": {
     "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0",
@@ -173,78 +146,61 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/index.css">
 </head>
+
 <body class="bg-[#f8fafc] text-slate-900 transition-colors duration-300">
-    <!-- PWA Splash Screen -->
-    <div id="pwa-splash">
-        <div class="logo">
-            <svg width="40" height="40" fill="none" stroke="white" viewBox="0 0 24 24" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-            </svg>
-        </div>
-        <h1>Titan</h1>
-        <p>Management</p>
-        <div class="loader"></div>
-    </div>
+
 
     <div id="root"></div>
 
-<script type="module" src="/index.tsx"></script>
-<script>
-    // Register Service Worker
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/sw.js')
-                .then((reg) => {
-                    console.log('[TitanEAM] SW registered:', reg.scope);
+    <script type="module" src="/index.tsx"></script>
+    <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then((reg) => {
+                        console.log('[TitanEAM] SW registered:', reg.scope);
 
-                    // Check for updates periodically (every 60 minutes)
-                    setInterval(() => {
-                        reg.update();
-                    }, 60 * 60 * 1000);
-                })
-                .catch((err) => {
-                    console.warn('[TitanEAM] SW registration failed:', err);
-                });
-        });
-    }
-
-    // Dismiss splash screen after app loads
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            const splash = document.getElementById('pwa-splash');
-            if (splash) {
-                splash.classList.add('loaded');
-                setTimeout(() => splash.remove(), 600);
-            }
-        }, 800);
-    });
-
-    // Handle PWA install prompt
-    let deferredPrompt;
-    window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-        // Dispatch custom event for React components to listen to
-        window.dispatchEvent(new CustomEvent('pwa-install-available'));
-    });
-
-    // Track successful installs
-    window.addEventListener('appinstalled', () => {
-        deferredPrompt = null;
-        console.log('[TitanEAM] App installed successfully');
-    });
-
-    // Expose install function globally
-    window.installPWA = async () => {
-        if (deferredPrompt) {
-            deferredPrompt.prompt();
-            const { outcome } = await deferredPrompt.userChoice;
-            console.log('[TitanEAM] Install prompt outcome:', outcome);
-            deferredPrompt = null;
+                        // Check for updates periodically (every 60 minutes)
+                        setInterval(() => {
+                            reg.update();
+                        }, 60 * 60 * 1000);
+                    })
+                    .catch((err) => {
+                        console.warn('[TitanEAM] SW registration failed:', err);
+                    });
+            });
         }
-    };
-</script>
+
+
+
+        // Handle PWA install prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            // Dispatch custom event for React components to listen to
+            window.dispatchEvent(new CustomEvent('pwa-install-available'));
+        });
+
+        // Track successful installs
+        window.addEventListener('appinstalled', () => {
+            deferredPrompt = null;
+            console.log('[TitanEAM] App installed successfully');
+        });
+
+        // Expose install function globally
+        window.installPWA = async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log('[TitanEAM] Install prompt outcome:', outcome);
+                deferredPrompt = null;
+            }
+        };
+    </script>
 </body>
+
 </html>

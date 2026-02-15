@@ -241,7 +241,7 @@ export const CorruptionControl: React.FC<CorruptionControlProps> = ({ lang }) =>
       </header>
 
       {loading ? (
-        <div className="p-20 text-center bg-white rounded-[2.5rem] shadow-sm border border-slate-100 relative overflow-hidden">
+        <div className="p-10 sm:p-20 text-center bg-white rounded-[2rem] sm:rounded-[2.5rem] shadow-sm border border-slate-100 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-50/20 to-transparent animate-scan pointer-events-none"></div>
 
           <div className="relative z-10">
@@ -329,7 +329,7 @@ export const CorruptionControl: React.FC<CorruptionControlProps> = ({ lang }) =>
           </div>
 
           {/* Summary */}
-          <div className="bg-gradient-to-br from-red-600 to-rose-700 text-white rounded-[2.5rem] p-8 shadow-2xl relative overflow-hidden">
+          <div className="bg-gradient-to-br from-red-600 to-rose-700 text-white rounded-[2rem] sm:rounded-[2.5rem] p-5 sm:p-8 shadow-2xl relative overflow-hidden">
             <div className="absolute right-0 top-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
             <div className="absolute left-0 bottom-0 w-48 h-48 bg-rose-400/20 rounded-full blur-3xl"></div>
 
@@ -345,7 +345,7 @@ export const CorruptionControl: React.FC<CorruptionControlProps> = ({ lang }) =>
           </div>
 
           {/* Filter Tabs */}
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
               {isRtl ? 'تصفية:' : 'Filter:'}
             </span>
@@ -371,7 +371,7 @@ export const CorruptionControl: React.FC<CorruptionControlProps> = ({ lang }) =>
             {filteredAlerts.map((alert: any, idx: number) => (
               <div key={alert.id || idx} className="bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 group">
                 <div className={`h-1.5 ${alert.severity === 'HIGH' ? 'bg-red-500' : alert.severity === 'MEDIUM' ? 'bg-amber-500' : 'bg-emerald-500'}`}></div>
-                <div className="p-7">
+                <div className="p-5 sm:p-7">
                   {/* Header */}
                   <div className="flex justify-between items-start mb-5">
                     <div className="flex items-center gap-3">

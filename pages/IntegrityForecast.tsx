@@ -187,7 +187,7 @@ export const IntegrityForecast: React.FC<IntegrityForecastProps> = ({ lang }) =>
       </header>
 
       {loading ? (
-        <div className="p-20 text-center bg-white rounded-[2.5rem] shadow-sm border border-slate-100 relative overflow-hidden">
+        <div className="p-10 sm:p-20 text-center bg-white rounded-[2rem] sm:rounded-[2.5rem] shadow-sm border border-slate-100 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-50/20 to-transparent animate-scan pointer-events-none"></div>
 
           <div className="relative z-10">
@@ -270,7 +270,7 @@ export const IntegrityForecast: React.FC<IntegrityForecastProps> = ({ lang }) =>
 
           {/* Organization Risk Index */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-1 bg-white p-8 rounded-[2.5rem] border border-slate-100 flex flex-col items-center justify-center text-center shadow-sm">
+            <div className="lg:col-span-1 bg-white p-6 sm:p-8 rounded-[2rem] sm:rounded-[2.5rem] border border-slate-100 flex flex-col items-center justify-center text-center shadow-sm">
               <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">{isRtl ? 'مؤشر خطر النزاهة العام' : 'Overall Integrity Risk Index'}</p>
               <div className="relative w-44 h-44 flex items-center justify-center mb-6">
                 <svg className="w-full h-full transform -rotate-90" viewBox="0 0 160 160">
@@ -304,7 +304,7 @@ export const IntegrityForecast: React.FC<IntegrityForecastProps> = ({ lang }) =>
               <p className="text-sm font-medium text-slate-500 mt-6">{isRtl ? 'تحليل مبني على سياق المعدات وسلوك الفنيين' : 'Analysis based on asset context and technician behavior'}</p>
             </div>
 
-            <div className="lg:col-span-2 bg-gradient-to-br from-slate-900 to-slate-800 text-white p-8 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
+            <div className="lg:col-span-2 bg-gradient-to-br from-slate-900 to-slate-800 text-white p-6 sm:p-8 rounded-[2rem] sm:rounded-[2.5rem] shadow-2xl relative overflow-hidden">
               <div className="absolute right-0 top-0 w-64 h-64 bg-indigo-500/10 blur-3xl"></div>
               <div className="absolute left-0 bottom-0 w-48 h-48 bg-purple-500/10 blur-3xl"></div>
 
@@ -346,7 +346,7 @@ export const IntegrityForecast: React.FC<IntegrityForecastProps> = ({ lang }) =>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {data.findings.map((finding: any, idx: number) => (
                 <div key={idx} className="bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 group">
-                  <div className="p-8">
+                  <div className="p-5 sm:p-8">
                     <div className="flex justify-between items-start mb-6">
                       <div className="flex items-center gap-3">
                         <span className="text-2xl">{getSeverityIcon(finding.severity)}</span>

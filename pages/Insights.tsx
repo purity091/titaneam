@@ -84,7 +84,7 @@ export const Insights: React.FC<InsightsProps> = ({ assets, records, lang }) => 
 
   return (
     <div className="space-y-10">
-      <header className="flex justify-between items-start">
+      <header className="flex flex-col sm:flex-row justify-between items-start gap-4">
         <div>
           <h2 className="text-3xl font-bold text-slate-900 tracking-tight">{t.insights}</h2>
           <p className="text-slate-500 mt-1 font-medium">{lang === 'ar' ? 'تحليلات ذكية وتنبؤات مبنية على بيانات الاستخدام الفعلية.' : 'Smart analytics and predictions based on actual usage data.'}</p>
@@ -119,7 +119,7 @@ export const Insights: React.FC<InsightsProps> = ({ assets, records, lang }) => 
       </header>
 
       {loading ? (
-        <div className="p-20 text-center bg-white rounded-[2.5rem] shadow-sm border border-slate-100 relative overflow-hidden">
+        <div className="p-10 sm:p-20 text-center bg-white rounded-[2rem] sm:rounded-[2.5rem] shadow-sm border border-slate-100 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/20 to-transparent animate-scan pointer-events-none"></div>
 
           <div className="relative z-10">
@@ -157,7 +157,7 @@ export const Insights: React.FC<InsightsProps> = ({ assets, records, lang }) => 
         </div>
       ) : data ? (
         <div className="space-y-10">
-          <div className="bg-gradient-to-br from-indigo-600 to-blue-700 text-white rounded-[2.5rem] p-10 shadow-2xl shadow-blue-900/10 relative overflow-hidden">
+          <div className="bg-gradient-to-br from-indigo-600 to-blue-700 text-white rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 shadow-2xl shadow-blue-900/10 relative overflow-hidden">
             <div className="absolute -right-20 -top-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
             <div className="absolute -left-20 -bottom-20 w-64 h-64 bg-blue-400/20 rounded-full blur-3xl"></div>
             <h3 className="text-xl font-bold mb-4 flex items-center rtl:space-x-reverse space-x-3 relative z-10">
@@ -173,7 +173,7 @@ export const Insights: React.FC<InsightsProps> = ({ assets, records, lang }) => 
               if (!asset) return null;
               return (
                 <div key={forecast.assetId} className="bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden flex flex-col group hover:shadow-xl transition-all duration-300">
-                  <div className="p-8 flex-1">
+                  <div className="p-5 sm:p-8 flex-1">
                     <div className="flex justify-between items-start mb-6">
                       <div>
                         <p className="text-[10px] font-bold text-blue-500 uppercase tracking-widest mb-1">{asset.id}</p>

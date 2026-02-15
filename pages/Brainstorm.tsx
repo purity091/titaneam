@@ -263,7 +263,7 @@ export const Brainstorm: React.FC<BrainstormProps> = ({ assets, records, lang })
             {activeView === 'brainstorm' ? (
                 <>
                     {/* Category Selection */}
-                    <div className="bg-white rounded-[2rem] p-8 shadow-sm border border-slate-100">
+                    <div className="bg-white rounded-[2rem] sm:rounded-[2rem] p-5 sm:p-8 shadow-sm border border-slate-100">
                         <h3 className="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
                             <span className="w-8 h-8 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-600">
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 6h16M4 10h16M4 14h16M4 18h16" /></svg>
@@ -297,7 +297,7 @@ export const Brainstorm: React.FC<BrainstormProps> = ({ assets, records, lang })
                     </div>
 
                     {/* Custom Prompt */}
-                    <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-[2rem] p-8 shadow-2xl relative overflow-hidden">
+                    <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-[2rem] p-5 sm:p-8 shadow-2xl relative overflow-hidden">
                         <div className="absolute right-0 top-0 w-96 h-96 bg-indigo-500/10 blur-3xl"></div>
                         <div className="absolute left-0 bottom-0 w-64 h-64 bg-purple-500/10 blur-3xl"></div>
 
@@ -350,7 +350,7 @@ export const Brainstorm: React.FC<BrainstormProps> = ({ assets, records, lang })
 
                     {/* Loading State */}
                     {loading && (
-                        <div className="bg-white rounded-[2.5rem] shadow-sm border border-slate-100 p-20 text-center">
+                        <div className="bg-white rounded-[2rem] sm:rounded-[2.5rem] shadow-sm border border-slate-100 p-10 sm:p-20 text-center">
                             <div className="relative w-24 h-24 mx-auto mb-8">
                                 <div className="absolute inset-0 bg-indigo-100 rounded-full animate-ping opacity-20"></div>
                                 <div className="relative w-24 h-24 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-full flex items-center justify-center">
@@ -375,7 +375,7 @@ export const Brainstorm: React.FC<BrainstormProps> = ({ assets, records, lang })
                     {session && !loading && (
                         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
                             {/* Session Summary */}
-                            <div className="bg-gradient-to-br from-indigo-600 to-purple-700 text-white rounded-[2.5rem] p-10 shadow-2xl shadow-indigo-900/20 relative overflow-hidden">
+                            <div className="bg-gradient-to-br from-indigo-600 to-purple-700 text-white rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 shadow-2xl shadow-indigo-900/20 relative overflow-hidden">
                                 <div className="absolute -right-20 -top-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
                                 <div className="absolute -left-20 -bottom-20 w-64 h-64 bg-purple-400/20 rounded-full blur-3xl"></div>
 

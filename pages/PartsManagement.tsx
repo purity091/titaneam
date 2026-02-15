@@ -14,7 +14,7 @@ export const PartsManagement: React.FC<PartsManagementProps> = ({ lang }) => {
 
   return (
     <div className="space-y-8">
-      <header className="flex justify-between items-center">
+      <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h2 className="text-3xl font-bold text-slate-900 tracking-tight">{t.parts}</h2>
           <p className="text-slate-500 mt-1 font-medium">{isRtl ? 'تتبع دقيق لكافة قطع الغيار والأرقام التسلسلية.' : 'Precise tracking of all spare parts and serial numbers.'}</p>
@@ -40,8 +40,8 @@ export const PartsManagement: React.FC<PartsManagementProps> = ({ lang }) => {
               <p className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest">{part.serialNumber}</p>
             </div>
             <div className="mt-6 pt-4 border-t border-slate-50 flex justify-between items-center">
-               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Inventory: OK</span>
-               <button className="text-blue-600 text-[10px] font-bold uppercase tracking-widest hover:underline">{isRtl ? 'عرض السجل' : 'View History'}</button>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Inventory: OK</span>
+              <button className="text-blue-600 text-[10px] font-bold uppercase tracking-widest hover:underline">{isRtl ? 'عرض السجل' : 'View History'}</button>
             </div>
           </div>
         ))}

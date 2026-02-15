@@ -1,0 +1,7 @@
+{
+  "name": "TitanEAM - Enterprise Asset Management",
+  "description": "A robust heavy machinery and industrial asset management system featuring real-time monitoring, maintenance tracking, and AI-powered predictive insights.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+    "name": "TitanEAM - Enterprise Asset Management",
+    "short_name": "TitanEAM",
+    "description": "نظام متكامل لإدارة الأصول المؤسسية - Enterprise Asset Management Platform",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "background_color": "#0f172a",
+    "theme_color": "#0f172a",
+    "categories": [
+        "business",
+        "productivity",
+        "utilities"
+    ],
+    "dir": "auto",
+    "lang": "ar",
+    "icons": [
+        {
+            "src": "/icons/icon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any"
+        },
+        {
+            "src": "/icons/icon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "لوحة الأسطول",
+            "short_name": "الأسطول",
+            "description": "Fleet Board - عرض حالة الأسطول",
+            "url": "/fleet-board"
+        },
+        {
+            "name": "رؤى الذكاء الاصطناعي",
+            "short_name": "الرؤى",
+            "description": "AI Insights - تحليلات ذكية",
+            "url": "/insights"
+        },
+        {
+            "name": "سجل الأصول",
+            "short_name": "الأصول",
+            "description": "Asset Registry - إدارة الأصول",
+            "url": "/assets"
+        }
+    ]
+}

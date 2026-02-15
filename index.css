@@ -1,0 +1,43 @@
+/* TitanEAM Global Styles */
+
+/* Reset touch highlight for native feel */
+body {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  overscroll-behavior-y: contain;
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Safe area padding for bottom nav in standalone mode */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .pb-safe {
+    padding-bottom: calc(env(safe-area-inset-bottom) + 0.5rem);
+  }
+}
+
+/* Smooth momentum scrolling on iOS */
+.scroll-touch {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent text selection in app-like contexts */
+@media all and (display-mode: standalone) {
+  .app-no-select {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
+
+/* Pull to refresh prevention */
+html {
+  overscroll-behavior: none;
+}

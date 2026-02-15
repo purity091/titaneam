@@ -2,7 +2,19 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { Asset, MaintenanceRecord, AuditEntry } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const API_KEY = process.env.API_KEY;
+
+let _ai: GoogleGenAI | null = null;
+const getAI = (): GoogleGenAI | null => {
+  if (!API_KEY) {
+    console.warn("Gemini API Key is not configured. AI features are disabled.");
+    return null;
+  }
+  if (!_ai) {
+    _ai = new GoogleGenAI({ apiKey: API_KEY });
+  }
+  return _ai;
+};
 
 export const getAIInsights = async (assets: Asset[], records: MaintenanceRecord[], lang: 'en' | 'ar' = 'en') => {
   const prompt = `
@@ -18,6 +30,9 @@ export const getAIInsights = async (assets: Asset[], records: MaintenanceRecord[
     
     Current Date: ${new Date().toISOString().split('T')[0]}
   `;
+
+  const ai = getAI();
+  if (!ai) return null;
 
   try {
     const response = await ai.models.generateContent({
@@ -72,6 +87,9 @@ export const getIntegrityForecasting = async (auditLogs: AuditEntry[], assets: A
     Provide a JSON response in ${lang === 'ar' ? 'Arabic' : 'English'}.
   `;
 
+  const ai = getAI();
+  if (!ai) return null;
+
   try {
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
@@ -111,8 +129,8 @@ export const getIntegrityForecasting = async (auditLogs: AuditEntry[], assets: A
 };
 
 export const detectCorruptionPatterns = async (auditLogs: AuditEntry[], assets: Asset[], lang: 'en' | 'ar' = 'en') => {
-    // Existing implementation remains unchanged
-    const prompt = `Act as a fraud investigator...`;
-    // ... (rest of function)
-    return null; // Simplified for this change request
+  // Existing implementation remains unchanged
+  const prompt = `Act as a fraud investigator...`;
+  // ... (rest of function)
+  return null; // Simplified for this change request
 };

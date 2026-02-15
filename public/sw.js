@@ -1,64 +1,28 @@
-// TitanEAM Service Worker v2.0.0
-// IMPORTANT: Bump version on every deploy to invalidate old caches
-const CACHE_VERSION = 'v2';
-const CACHE_NAME = `titan-eam-${CACHE_VERSION}`;
+// TitanEAM Service Worker - Self-destruct mode
+// This SW immediately unregisters itself and clears all caches
+// to fix white screen issues caused by stale cached content
 
-// Install: immediately activate (skip waiting)
-self.addEventListener('install', (event) => {
+self.addEventListener('install', () => {
     self.skipWaiting();
 });
 
-// Activate: delete ALL old caches to prevent stale content
 self.addEventListener('activate', (event) => {
     event.waitUntil(
-        caches.keys().then((cacheNames) => {
+        caches.keys().then((names) => {
             return Promise.all(
-                cacheNames
-                    .filter((name) => name !== CACHE_NAME)
-                    .map((name) => caches.delete(name))
+                names.map((name) => caches.delete(name))
             );
-        }).then(() => self.clients.claim())
+        }).then(() => {
+            return self.registration.unregister();
+        }).then(() => {
+            return self.clients.matchAll();
+        }).then((clients) => {
+            clients.forEach((client) => client.navigate(client.url));
+        })
     );
 });
 
-// Fetch: Network-first for everything to prevent white screens
+// Pass ALL requests directly to the network - no caching
 self.addEventListener('fetch', (event) => {
-    const { request } = event;
-
-    // Skip non-GET requests
-    if (request.method !== 'GET') return;
-
-    // Navigation requests (HTML pages): Always network-first
-    if (request.mode === 'navigate') {
-        event.respondWith(
-            fetch(request)
-                .then((response) => {
-                    // Cache a fresh copy
-                    const clone = response.clone();
-                    caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
-                    return response;
-                })
-                .catch(() => {
-                    // Offline fallback: serve cached index.html
-                    return caches.match('/index.html');
-                })
-        );
-        return;
-    }
-
-    // All other requests: Network-first with cache fallback
-    event.respondWith(
-        fetch(request)
-            .then((response) => {
-                // Only cache successful responses
-                if (response && response.status === 200) {
-                    const clone = response.clone();
-                    caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
-                }
-                return response;
-            })
-            .catch(() => {
-                return caches.match(request);
-            })
-    );
+    event.respondWith(fetch(event.request));
 });

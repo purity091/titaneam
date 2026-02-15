@@ -144,38 +144,22 @@
 
     <script type="module" src="/index.tsx"></script>
     <script>
-        // Service Worker: Clear stale caches and register fresh
+        // NUCLEAR FIX: Unregister ALL service workers and clear ALL caches
+        // This prevents the stale-cache deadlock that causes white screens
         if ('serviceWorker' in navigator) {
-            // First: clear ALL old caches to prevent white screen
-            if ('caches' in window) {
-                caches.keys().then((names) => {
-                    names.forEach((name) => caches.delete(name));
+            navigator.serviceWorker.getRegistrations().then((registrations) => {
+                registrations.forEach((reg) => {
+                    reg.unregister();
+                    console.log('[TitanEAM] Unregistered stale SW:', reg.scope);
                 });
-            }
-
-            navigator.serviceWorker.register('/sw.js')
-                .then((reg) => {
-                    console.log('[TitanEAM] SW registered:', reg.scope);
-
-                    // When a new SW is found, reload to get fresh content
-                    reg.addEventListener('updatefound', () => {
-                        const newWorker = reg.installing;
-                        if (newWorker) {
-                            newWorker.addEventListener('statechange', () => {
-                                if (newWorker.state === 'activated') {
-                                    window.location.reload();
-                                }
-                            });
-                        }
-                    });
-                })
-                .catch((err) => {
-                    console.warn('[TitanEAM] SW registration failed:', err);
+            });
+        }
+        if ('caches' in window) {
+            caches.keys().then((names) => {
+                names.forEach((name) => {
+                    caches.delete(name);
+                    console.log('[TitanEAM] Deleted cache:', name);
                 });
-
-            // If the SW controller changes (new SW took over), reload
-            navigator.serviceWorker.addEventListener('controllerchange', () => {
-                window.location.reload();
             });
         }
 

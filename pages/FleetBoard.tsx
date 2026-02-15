@@ -162,8 +162,8 @@ export const FleetBoard: React.FC<FleetBoardProps> = ({ assets, lang }) => {
             key={idx}
             onClick={() => setStatusFilter(idx === 0 ? 'ALL' : Object.values(AssetStatus)[idx - 1])}
             className={`relative group p-5 rounded-2xl border transition-all duration-300 text-left hover:-translate-y-1 hover:shadow-xl ${stat.active
-                ? `bg-gradient-to-br ${stat.gradient} border-transparent shadow-lg ${isRtl ? 'shadow-[-5px_10px_30px_-10px_rgba(0,0,0,0.1)]' : 'shadow-[5px_10px_30px_-10px_rgba(0,0,0,0.1)]'}`
-                : 'bg-white border-slate-100 hover:border-slate-200'
+              ? `bg-gradient-to-br ${stat.gradient} border-transparent shadow-lg ${isRtl ? 'shadow-[-5px_10px_30px_-10px_rgba(0,0,0,0.1)]' : 'shadow-[5px_10px_30px_-10px_rgba(0,0,0,0.1)]'}`
+              : 'bg-white border-slate-100 hover:border-slate-200'
               }`}
           >
             <div className="flex justify-between items-start mb-2">
@@ -184,8 +184,8 @@ export const FleetBoard: React.FC<FleetBoardProps> = ({ assets, lang }) => {
       </div>
 
       {/* Controls Bar */}
-      <div className="sticky top-4 z-40 bg-white/80 backdrop-blur-xl p-2 rounded-2xl shadow-sm border border-slate-200/50 flex flex-wrap gap-2 items-center">
-        <div className="relative flex-1 min-w-[240px]">
+      <div className="sticky top-4 z-40 bg-white/80 backdrop-blur-xl p-3 md:p-2 rounded-2xl shadow-sm border border-slate-200/50 flex flex-col md:flex-row gap-3 md:gap-2 md:items-center transition-all">
+        <div className="relative w-full md:flex-1 md:min-w-[240px]">
           <input
             type="text"
             placeholder={t.searchPlaceholder}
@@ -206,10 +206,10 @@ export const FleetBoard: React.FC<FleetBoardProps> = ({ assets, lang }) => {
           )}
         </div>
 
-        <div className="w-px h-8 bg-slate-200 mx-2 hidden md:block"></div>
+        <div className="w-full h-px md:w-px md:h-8 bg-slate-200 hidden md:block"></div>
 
-        <div className="flex gap-2 w-full md:w-auto overflow-x-auto pb-1 md:pb-0">
-          <div className="relative min-w-[140px]">
+        <div className="flex gap-2 w-full md:w-auto">
+          <div className="relative flex-1 md:flex-none md:min-w-[160px]">
             <select
               className="w-full pl-4 pr-10 py-3 bg-slate-50/50 border border-slate-200 rounded-xl text-xs font-bold uppercase tracking-wider text-slate-600 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none appearance-none cursor-pointer transition-all hover:bg-white"
               value={typeFilter}
@@ -232,10 +232,10 @@ export const FleetBoard: React.FC<FleetBoardProps> = ({ assets, lang }) => {
                 setTypeFilter('ALL');
                 setSearchTerm('');
               }}
-              className="px-5 py-3 bg-red-50 text-red-600 border border-red-100 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-red-100 hover:border-red-200 transition-all flex items-center gap-2 whitespace-nowrap"
+              className="px-4 py-3 bg-red-50 text-red-600 border border-red-100 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-red-100 hover:border-red-200 transition-all flex items-center justify-center gap-2 whitespace-nowrap"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
-              {isRtl ? 'مسح' : 'Clear'}
+              <span className="hidden sm:inline">{isRtl ? 'مسح' : 'Clear'}</span>
             </button>
           )}
         </div>

@@ -23,30 +23,30 @@ export const AuditLog: React.FC<AuditLogProps> = ({ lang }) => {
         <div className="overflow-x-auto">
           <table className="w-full text-left rtl:text-right">
             <thead>
-              <tr className="bg-slate-50/50 text-[11px] font-bold text-slate-400 uppercase tracking-[0.15em] border-b border-slate-100">
-                <th className="px-8 py-5">{t.timestamp}</th>
-                <th className="px-8 py-5">Asset ID</th>
-                <th className="px-8 py-5">{t.user}</th>
-                <th className="px-8 py-5">{t.action}</th>
-                <th className="px-8 py-5">{t.details}</th>
-                <th className="px-8 py-5">{t.location}</th>
+              <tr className="bg-slate-50/50 text-[10px] md:text-[11px] font-bold text-slate-400 uppercase tracking-[0.15em] border-b border-slate-100 whitespace-nowrap">
+                <th className="px-4 py-3 md:px-8 md:py-5">{t.timestamp}</th>
+                <th className="px-4 py-3 md:px-8 md:py-5">Asset ID</th>
+                <th className="px-4 py-3 md:px-8 md:py-5">{t.user}</th>
+                <th className="px-4 py-3 md:px-8 md:py-5">{t.action}</th>
+                <th className="px-4 py-3 md:px-8 md:py-5">{t.details}</th>
+                <th className="px-4 py-3 md:px-8 md:py-5">{t.location}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
               {MOCK_AUDIT_LOGS.map((entry) => (
                 <tr key={entry.id} className="hover:bg-slate-50/80 transition-colors">
-                  <td className="px-8 py-5 font-mono text-xs text-slate-500">{entry.timestamp}</td>
-                  <td className="px-8 py-5">
-                    <span className="font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded">{entry.assetId}</span>
+                  <td className="px-4 py-3 md:px-8 md:py-5 font-mono text-[10px] md:text-xs text-slate-500 whitespace-nowrap">{entry.timestamp}</td>
+                  <td className="px-4 py-3 md:px-8 md:py-5">
+                    <span className="font-mono text-[10px] md:text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded whitespace-nowrap">{entry.assetId}</span>
                   </td>
-                  <td className="px-8 py-5 text-sm font-bold text-slate-900">{entry.userId}</td>
-                  <td className="px-8 py-5">
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-slate-100 text-slate-600">
+                  <td className="px-4 py-3 md:px-8 md:py-5 text-xs md:text-sm font-bold text-slate-900 whitespace-nowrap">{entry.userId}</td>
+                  <td className="px-4 py-3 md:px-8 md:py-5">
+                    <span className="inline-flex items-center px-2 py-1 md:px-3 md:py-1 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-widest bg-slate-100 text-slate-600 whitespace-nowrap">
                       {entry.action}
                     </span>
                   </td>
-                  <td className="px-8 py-5 text-sm text-slate-600 max-w-xs truncate">{entry.details}</td>
-                  <td className="px-8 py-5 text-xs text-slate-400">{entry.location}</td>
+                  <td className="px-4 py-3 md:px-8 md:py-5 text-xs md:text-sm text-slate-600 max-w-xs truncate">{entry.details}</td>
+                  <td className="px-4 py-3 md:px-8 md:py-5 text-[10px] md:text-xs text-slate-400 whitespace-nowrap">{entry.location}</td>
                 </tr>
               ))}
             </tbody>

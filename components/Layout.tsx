@@ -112,7 +112,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, lang, setLang }) => {
       <main className={`
         flex-1 p-4 md:p-10 transition-all duration-300
         ${isRtl ? 'md:mr-[260px]' : 'md:ml-[260px]'}
-        pb-24 md:pb-10
+        pb-32 md:pb-10 min-h-screen
       `}>
         <div className="max-w-7xl mx-auto animate-in fade-in slide-in-from-bottom-2 duration-500">
           {children}
@@ -120,7 +120,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, lang, setLang }) => {
       </main>
 
       {/* Mobile Bottom Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-xl border-t border-slate-200/60 p-2 z-50 md:hidden flex justify-around items-end pb-3 lg:pb-2">
+      <div className="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-xl border-t border-slate-200/60 p-2 z-50 md:hidden flex justify-around items-end pb-safe safe-area-bottom shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)]">
         <Link
           to="/"
           className={`flex flex-col items-center gap-1 p-2 rounded-xl transition-all w-16 ${location.pathname === '/' ? 'text-blue-600' : 'text-slate-400 active:scale-95'}`}
@@ -138,10 +138,10 @@ export const Layout: React.FC<LayoutProps> = ({ children, lang, setLang }) => {
         </Link>
 
         {/* Central Scan/Action Button */}
-        <div className="-mt-10 relative group">
+        <div className="-mt-12 relative group">
           <div className="absolute inset-0 bg-blue-500 rounded-full blur opacity-40 group-hover:opacity-60 transition-opacity"></div>
-          <Link to="/assets" className="relative flex items-center justify-center w-14 h-14 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-full shadow-lg shadow-blue-600/30 text-white transform active:scale-90 hover:scale-105 transition-all">
-            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" /></svg>
+          <Link to="/assets" className="relative flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-full shadow-xl shadow-blue-600/40 text-white transform active:scale-90 hover:scale-105 transition-all text-white border-4 border-[#f8fafc]">
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" /></svg>
           </Link>
         </div>
 

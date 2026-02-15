@@ -120,46 +120,63 @@ export const Layout: React.FC<LayoutProps> = ({ children, lang, setLang }) => {
       </main>
 
       {/* Mobile Bottom Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-xl border-t border-slate-200/60 p-2 z-50 md:hidden flex justify-around items-end pb-safe safe-area-bottom shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)]">
-        <Link
-          to="/"
-          className={`flex flex-col items-center gap-1 p-2 rounded-xl transition-all w-16 ${location.pathname === '/' ? 'text-blue-600' : 'text-slate-400 active:scale-95'}`}
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
-          <span className="text-[9px] font-bold tracking-wide">{t.dashboard}</span>
-        </Link>
+      {/* Mobile Bottom Navigation */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-2xl border-t border-slate-200/50 pb-safe z-50 md:hidden">
+        <div className="flex justify-between items-end px-2 h-[4.5rem] relative">
 
-        <Link
-          to="/fleet-board"
-          className={`flex flex-col items-center gap-1 p-2 rounded-xl transition-all w-16 ${location.pathname === '/fleet-board' ? 'text-blue-600' : 'text-slate-400 active:scale-95'}`}
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
-          <span className="text-[9px] font-bold tracking-wide">{t.fleetBoard}</span>
-        </Link>
-
-        {/* Central Scan/Action Button */}
-        <div className="-mt-12 relative group">
-          <div className="absolute inset-0 bg-blue-500 rounded-full blur opacity-40 group-hover:opacity-60 transition-opacity"></div>
-          <Link to="/assets" className="relative flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-full shadow-xl shadow-blue-600/40 text-white transform active:scale-90 hover:scale-105 transition-all text-white border-4 border-[#f8fafc]">
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" /></svg>
+          <Link
+            to="/"
+            className={`flex-1 flex flex-col items-center justify-center gap-1.5 pb-2 transition-all duration-300 group ${location.pathname === '/' ? 'text-blue-600' : 'text-slate-400 hover:text-slate-600'}`}
+          >
+            <div className={`relative transition-all duration-300 ${location.pathname === '/' ? '-translate-y-1' : ''}`}>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={location.pathname === '/' ? 2.5 : 2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+              {location.pathname === '/' && <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-blue-600 rounded-full"></span>}
+            </div>
+            <span className={`text-[10px] font-medium tracking-wide transition-all ${location.pathname === '/' ? 'font-bold opacity-100' : 'opacity-70 group-hover:opacity-100'}`}>{t.dashboard}</span>
           </Link>
+
+          <Link
+            to="/fleet-board"
+            className={`flex-1 flex flex-col items-center justify-center gap-1.5 pb-2 transition-all duration-300 group ${location.pathname === '/fleet-board' ? 'text-blue-600' : 'text-slate-400 hover:text-slate-600'}`}
+          >
+            <div className={`relative transition-all duration-300 ${location.pathname === '/fleet-board' ? '-translate-y-1' : ''}`}>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={location.pathname === '/fleet-board' ? 2.5 : 2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2" /></svg>
+              {location.pathname === '/fleet-board' && <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-blue-600 rounded-full"></span>}
+            </div>
+            <span className={`text-[10px] font-medium tracking-wide transition-all ${location.pathname === '/fleet-board' ? 'font-bold opacity-100' : 'opacity-70 group-hover:opacity-100'}`}>{t.fleetBoard}</span>
+          </Link>
+
+          {/* Central Scan/Action Button - Proportional Floating FAB */}
+          <div className="flex-1 flex justify-center relative -top-6">
+            <Link to="/assets" className="group relative w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-blue-500/30 transition-transform active:scale-95 hover:-translate-y-1">
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-full"></div>
+              <div className="absolute inset-0 bg-blue-400 rounded-full opacity-0 group-hover:opacity-20 transition-opacity"></div>
+              <svg className="w-7 h-7 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" /></svg>
+            </Link>
+          </div>
+
+          <Link
+            to="/insights"
+            className={`flex-1 flex flex-col items-center justify-center gap-1.5 pb-2 transition-all duration-300 group ${location.pathname === '/insights' ? 'text-blue-600' : 'text-slate-400 hover:text-slate-600'}`}
+          >
+            <div className={`relative transition-all duration-300 ${location.pathname === '/insights' ? '-translate-y-1' : ''}`}>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={location.pathname === '/insights' ? 2.5 : 2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+              {location.pathname === '/insights' && <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-blue-600 rounded-full"></span>}
+            </div>
+            <span className={`text-[10px] font-medium tracking-wide transition-all ${location.pathname === '/insights' ? 'font-bold opacity-100' : 'opacity-70 group-hover:opacity-100'}`}>{t.insights}</span>
+          </Link>
+
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className={`flex-1 flex flex-col items-center justify-center gap-1.5 pb-2 transition-all duration-300 group ${isMobileMenuOpen ? 'text-blue-600' : 'text-slate-400 hover:text-slate-600'}`}
+          >
+            <div className={`relative transition-all duration-300 ${isMobileMenuOpen ? '-translate-y-1' : ''}`}>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={isMobileMenuOpen ? 2.5 : 2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+              {isMobileMenuOpen && <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-blue-600 rounded-full"></span>}
+            </div>
+            <span className={`text-[10px] font-medium tracking-wide transition-all ${isMobileMenuOpen ? 'font-bold opacity-100' : 'opacity-70 group-hover:opacity-100'}`}>{isRtl ? 'المزيد' : 'More'}</span>
+          </button>
         </div>
-
-        <Link
-          to="/insights"
-          className={`flex flex-col items-center gap-1 p-2 rounded-xl transition-all w-16 ${location.pathname === '/insights' ? 'text-blue-600' : 'text-slate-400 active:scale-95'}`}
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-          <span className="text-[9px] font-bold tracking-wide">{t.insights}</span>
-        </Link>
-
-        <button
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className={`flex flex-col items-center gap-1 p-2 rounded-xl transition-all w-16 ${isMobileMenuOpen ? 'text-blue-600' : 'text-slate-400 active:scale-95'}`}
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
-          <span className="text-[9px] font-bold tracking-wide">{isRtl ? 'المزيد' : 'More'}</span>
-        </button>
       </div>
     </div>
   );

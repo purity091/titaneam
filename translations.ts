@@ -2,6 +2,8 @@
 export const translations = {
   en: {
     dashboard: "Dashboard",
+    gettingStarted: "Operator Guide",
+    pitch: "Why TitanEAM?",
     fleetBoard: "Fleet Board",
     registry: "Asset Registry",
     maintenance: "Maintenance",
@@ -59,6 +61,8 @@ export const translations = {
   },
   ar: {
     dashboard: "لوحة التحكم",
+    gettingStarted: "دليل التدريب والبدء",
+    pitch: "لماذا تختارنا (الشركات)",
     fleetBoard: "لوحة الأسطول",
     registry: "سجل الأصول",
     maintenance: "الصيانة",

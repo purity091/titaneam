@@ -14,6 +14,8 @@ import { FleetRoadmap } from './pages/FleetRoadmap';
 import { IntegrityForecast } from './pages/IntegrityForecast';
 import { Brainstorm } from './pages/Brainstorm';
 import { TitanSimulator } from './pages/TitanSimulator';
+import { Onboarding } from './pages/Onboarding';
+import { Pitch } from './pages/Pitch';
 import { Asset, MaintenanceRecord } from './types';
 import { MOCK_ASSETS, MOCK_RECORDS, MOCK_AUDIT_LOGS } from './constants';
 import { translations } from './translations';
@@ -33,6 +35,8 @@ const App: React.FC = () => {
       <Layout lang={lang} setLang={setLang}>
         <Routes>
           <Route path="/" element={<Dashboard assets={assets} lang={lang} />} />
+          <Route path="/getting-started" element={<Onboarding lang={lang} />} />
+          <Route path="/pitch" element={<Pitch lang={lang} />} />
           <Route path="/fleet-board" element={<FleetBoard assets={assets} lang={lang} />} />
           <Route path="/assets" element={<AssetRegistry assets={assets} lang={lang} />} />
           <Route path="/assets/:id" element={<AssetDetail assets={assets} records={records} auditLogs={MOCK_AUDIT_LOGS} lang={lang} />} />

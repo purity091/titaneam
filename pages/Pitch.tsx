@@ -360,7 +360,7 @@ export const Pitch: React.FC<PitchProps> = ({ lang }) => {
             {gpt.subtitle}
           </p>
 
-          <div className="flex flex-wrap gap-3 pt-4 border-t border-white/10 mt-8">
+          <div className="flex overflow-x-auto gap-2 pt-4 border-t border-white/10 mt-8 pb-1 no-scrollbar">
             {[
               { id: 'directory', label: gpt.tabDirectory, icon: '🧩' },
               { id: 'competitors', label: gpt.tabCompetitors, icon: '📊' },
@@ -370,14 +370,14 @@ export const Pitch: React.FC<PitchProps> = ({ lang }) => {
               <button
                 key={tab.id}
                 onClick={() => setActiveSubTab(tab.id as any)}
-                className={`px-5 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 active:scale-95 ${
+                className={`flex-shrink-0 px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 active:scale-95 ${
                   activeSubTab === tab.id
                     ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
                     : 'bg-white/5 hover:bg-white/10 text-slate-300 border border-white/5'
                 }`}
               >
                 <span>{tab.icon}</span>
-                <span>{tab.label}</span>
+                <span className="whitespace-nowrap">{tab.label}</span>
               </button>
             ))}
           </div>
@@ -439,73 +439,54 @@ export const Pitch: React.FC<PitchProps> = ({ lang }) => {
         </div>
       )}
 
-      {/* 2B. MARKET COMPETITORS ANALYSIS */}
+      {/* 2B. MARKET COMPETITORS ANALYSIS - Mobile-first stacked cards */}
       {activeSubTab === 'competitors' && (
-        <div className="bg-white p-6 md:p-10 rounded-[2.5rem] border border-slate-100 shadow-sm space-y-8 animate-in fade-in duration-300">
+        <div className="bg-white p-5 md:p-10 rounded-[2.5rem] border border-slate-100 shadow-sm space-y-8 animate-in fade-in duration-300">
           <div className="max-w-3xl">
-            <h2 className="text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2.5">
-              <span className="w-9 h-9 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 text-lg">📊</span>
+            <h2 className="text-xl md:text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2.5">
+              <span className="w-9 h-9 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 text-lg flex-shrink-0">📊</span>
               {gpt.compareTitle}
             </h2>
-            <p className="text-slate-500 font-medium text-sm mt-1">
-              {gpt.compareSubtitle}
-            </p>
+            <p className="text-slate-500 font-medium text-sm mt-1">{gpt.compareSubtitle}</p>
           </div>
 
-          <div className="overflow-x-auto pb-4">
-            <table className="w-full text-left rtl:text-right border-collapse min-w-[800px]">
-              <thead>
-                <tr className="border-b border-slate-200 text-xs font-bold text-slate-400 uppercase tracking-wider">
-                  <th className="py-4 pr-6 pl-4 w-1/5">{gpt.competitorTable.feature}</th>
-                  <th className="py-4 px-6 w-1/4 bg-blue-50 text-blue-700 rounded-t-xl font-black">{gpt.competitorTable.titan}</th>
-                  <th className="py-4 px-6 w-1/4 text-slate-600 bg-slate-50 rounded-t-xl">{gpt.competitorTable.maximo}</th>
-                  <th className="py-4 px-6 w-1/4 text-slate-600 bg-slate-50 rounded-t-xl">{gpt.competitorTable.sap}</th>
-                  <th className="py-4 pl-6 pr-4 w-1/5 text-slate-400 bg-slate-100/50 rounded-t-xl">{gpt.competitorTable.legacy}</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 text-xs align-top font-medium">
-                {/* Row 1 */}
-                <tr className="hover:bg-slate-50/50 transition-colors">
-                  <td className="py-5 pr-6 pl-4 font-bold text-slate-900 text-sm">{gpt.competitorTable.row1.name}</td>
-                  <td className="py-5 px-6 text-blue-900 bg-blue-50/20 font-semibold border-l border-r border-blue-500/5 leading-relaxed">{gpt.competitorTable.row1.titan}</td>
-                  <td className="py-5 px-6 text-slate-500 bg-slate-50/30 leading-relaxed">{gpt.competitorTable.row1.maximo}</td>
-                  <td className="py-5 px-6 text-slate-500 bg-slate-50/30 leading-relaxed">{gpt.competitorTable.row1.sap}</td>
-                  <td className="py-5 pl-6 pr-4 text-slate-400 bg-slate-100/10 leading-relaxed">{gpt.competitorTable.row1.legacy}</td>
-                </tr>
-                {/* Row 2 */}
-                <tr className="hover:bg-slate-50/50 transition-colors">
-                  <td className="py-5 pr-6 pl-4 font-bold text-slate-900 text-sm">{gpt.competitorTable.row2.name}</td>
-                  <td className="py-5 px-6 text-blue-900 bg-blue-50/20 font-semibold border-l border-r border-blue-500/5 leading-relaxed">{gpt.competitorTable.row2.titan}</td>
-                  <td className="py-5 px-6 text-slate-500 bg-slate-50/30 leading-relaxed">{gpt.competitorTable.row2.maximo}</td>
-                  <td className="py-5 px-6 text-slate-500 bg-slate-50/30 leading-relaxed">{gpt.competitorTable.row2.sap}</td>
-                  <td className="py-5 pl-6 pr-4 text-slate-400 bg-slate-100/10 leading-relaxed">{gpt.competitorTable.row2.legacy}</td>
-                </tr>
-                {/* Row 3 */}
-                <tr className="hover:bg-slate-50/50 transition-colors">
-                  <td className="py-5 pr-6 pl-4 font-bold text-slate-900 text-sm">{gpt.competitorTable.row3.name}</td>
-                  <td className="py-5 px-6 text-blue-900 bg-blue-50/20 font-semibold border-l border-r border-blue-500/5 leading-relaxed">{gpt.competitorTable.row3.titan}</td>
-                  <td className="py-5 px-6 text-slate-500 bg-slate-50/30 leading-relaxed">{gpt.competitorTable.row3.maximo}</td>
-                  <td className="py-5 px-6 text-slate-500 bg-slate-50/30 leading-relaxed">{gpt.competitorTable.row3.sap}</td>
-                  <td className="py-5 pl-6 pr-4 text-slate-400 bg-slate-100/10 leading-relaxed">{gpt.competitorTable.row3.legacy}</td>
-                </tr>
-                {/* Row 4 */}
-                <tr className="hover:bg-slate-50/50 transition-colors">
-                  <td className="py-5 pr-6 pl-4 font-bold text-slate-900 text-sm">{gpt.competitorTable.row4.name}</td>
-                  <td className="py-5 px-6 text-blue-900 bg-blue-50/20 font-semibold border-l border-r border-blue-500/5 leading-relaxed">{gpt.competitorTable.row4.titan}</td>
-                  <td className="py-5 px-6 text-slate-500 bg-slate-50/30 leading-relaxed">{gpt.competitorTable.row4.maximo}</td>
-                  <td className="py-5 px-6 text-slate-500 bg-slate-50/30 leading-relaxed">{gpt.competitorTable.row4.sap}</td>
-                  <td className="py-5 pl-6 pr-4 text-slate-400 bg-slate-100/10 leading-relaxed">{gpt.competitorTable.row4.legacy}</td>
-                </tr>
-                {/* Row 5 */}
-                <tr className="hover:bg-slate-50/50 transition-colors">
-                  <td className="py-5 pr-6 pl-4 font-bold text-slate-900 text-sm">{gpt.competitorTable.row5.name}</td>
-                  <td className="py-5 px-6 text-blue-900 bg-blue-50/20 font-semibold border-l border-r border-blue-500/5 leading-relaxed">{gpt.competitorTable.row5.titan}</td>
-                  <td className="py-5 px-6 text-slate-500 bg-slate-50/30 leading-relaxed">{gpt.competitorTable.row5.maximo}</td>
-                  <td className="py-5 px-6 text-slate-500 bg-slate-50/30 leading-relaxed">{gpt.competitorTable.row5.sap}</td>
-                  <td className="py-5 pl-6 pr-4 text-slate-400 bg-slate-100/10 leading-relaxed">{gpt.competitorTable.row5.legacy}</td>
-                </tr>
-              </tbody>
-            </table>
+          {/* Column Legend - always visible */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+            <div className="bg-blue-600 text-white rounded-2xl px-3 py-2 text-center text-[10px] font-bold uppercase tracking-wider col-span-2 md:col-span-1">{gpt.competitorTable.titan} ✦</div>
+            <div className="bg-slate-100 text-slate-600 rounded-2xl px-3 py-2 text-center text-[10px] font-bold uppercase tracking-wider">{gpt.competitorTable.maximo}</div>
+            <div className="bg-slate-100 text-slate-600 rounded-2xl px-3 py-2 text-center text-[10px] font-bold uppercase tracking-wider">{gpt.competitorTable.sap}</div>
+            <div className="bg-slate-50 text-slate-400 rounded-2xl px-3 py-2 text-center text-[10px] font-bold uppercase tracking-wider">{gpt.competitorTable.legacy}</div>
+          </div>
+
+          {/* Mobile stacked rows */}
+          <div className="space-y-4">
+            {[gpt.competitorTable.row1, gpt.competitorTable.row2, gpt.competitorTable.row3, gpt.competitorTable.row4, gpt.competitorTable.row5].map((row, idx) => (
+              <div key={idx} className="border border-slate-100 rounded-2xl overflow-hidden">
+                {/* Feature heading */}
+                <div className="bg-slate-900 text-white px-4 py-3">
+                  <span className="text-xs font-bold">{row.name}</span>
+                </div>
+                {/* 4 columns stacked on mobile, 2x2 on sm, 4-col on lg */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
+                  <div className="p-4 bg-blue-50/30">
+                    <p className="text-[9px] font-bold uppercase text-blue-500 mb-1.5 tracking-widest">{gpt.competitorTable.titan}</p>
+                    <p className="text-xs text-blue-900 font-semibold leading-relaxed">{row.titan}</p>
+                  </div>
+                  <div className="p-4">
+                    <p className="text-[9px] font-bold uppercase text-slate-400 mb-1.5 tracking-widest">{gpt.competitorTable.maximo}</p>
+                    <p className="text-xs text-slate-500 leading-relaxed">{row.maximo}</p>
+                  </div>
+                  <div className="p-4">
+                    <p className="text-[9px] font-bold uppercase text-slate-400 mb-1.5 tracking-widest">{gpt.competitorTable.sap}</p>
+                    <p className="text-xs text-slate-500 leading-relaxed">{row.sap}</p>
+                  </div>
+                  <div className="p-4 bg-slate-50/50">
+                    <p className="text-[9px] font-bold uppercase text-slate-300 mb-1.5 tracking-widest">{gpt.competitorTable.legacy}</p>
+                    <p className="text-xs text-slate-400 leading-relaxed">{row.legacy}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       )}
@@ -592,38 +573,39 @@ export const Pitch: React.FC<PitchProps> = ({ lang }) => {
         </div>
       )}
 
-      {/* 2D. CORE DIFFERENCE MATRIX */}
+      {/* 2D. CORE DIFFERENCE MATRIX - Mobile-first stacked cards using gpt.competitorTable rows */}
       {activeSubTab === 'matrix' && (
-        <div className="bg-white p-6 md:p-10 rounded-[2.5rem] border border-slate-100 shadow-sm space-y-8 animate-in fade-in duration-300">
+        <div className="bg-white p-5 md:p-10 rounded-[2.5rem] border border-slate-100 shadow-sm space-y-8 animate-in fade-in duration-300">
           <div className="max-w-3xl">
-            <h2 className="text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2.5">
-              <span className="w-9 h-9 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 text-lg">⚖️</span>
-              {pt[lang].comparisonTitle}
+            <h2 className="text-xl md:text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2.5">
+              <span className="w-9 h-9 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 text-lg flex-shrink-0">⚖️</span>
+              {gpt.compareTitle}
             </h2>
-            <p className="text-slate-500 font-medium text-sm mt-1">
-              {pt[lang].comparisonSubtitle}
-            </p>
+            <p className="text-slate-500 font-medium text-sm mt-1">{gpt.compareSubtitle}</p>
           </div>
 
-          <div className="overflow-x-auto pb-4">
-            <table className="w-full text-left rtl:text-right border-collapse">
-              <thead>
-                <tr className="border-b border-slate-200 text-xs font-bold text-slate-400 uppercase tracking-wider">
-                  <th className="py-4 pr-6 pl-4 w-1/5">{pt[lang].featureCol}</th>
-                  <th className="py-4 px-6 w-2/5 bg-slate-50 text-slate-500 rounded-t-xl">{pt[lang].traditionalCol}</th>
-                  <th className="py-4 pl-6 pr-4 w-2/5 text-blue-600 bg-blue-50/50 rounded-t-xl">{pt[lang].titanCol}</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 text-sm align-top">
-                {pt[lang].featureLabels.map((row, idx) => (
-                  <tr key={idx} className="hover:bg-slate-50/50 transition-colors">
-                    <td className="py-5 pr-6 pl-4 font-bold text-slate-900">{row.name}</td>
-                    <td className="py-5 px-6 text-slate-500 bg-slate-50/30 leading-relaxed text-xs">{row.trad}</td>
-                    <td className="py-5 pl-6 pr-4 font-medium text-slate-900 bg-blue-50/10 leading-relaxed text-xs border-l border-r border-blue-500/5">{row.titan}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="space-y-4">
+            {[gpt.competitorTable.row1, gpt.competitorTable.row2, gpt.competitorTable.row3, gpt.competitorTable.row4, gpt.competitorTable.row5].map((row, idx) => (
+              <div key={idx} className="border border-slate-100 rounded-2xl overflow-hidden">
+                <div className="bg-slate-800 text-white px-4 py-3">
+                  <p className="text-xs font-bold">{row.name}</p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                  <div className="p-4 bg-slate-50/40">
+                    <p className="text-[9px] font-bold uppercase text-slate-400 mb-1.5 tracking-widest">
+                      {isRtl ? 'الأنظمة التقليدية' : 'Traditional Systems'}
+                    </p>
+                    <p className="text-xs text-slate-600 leading-relaxed">{row.maximo}</p>
+                  </div>
+                  <div className="p-4 bg-blue-50/20">
+                    <p className="text-[9px] font-bold uppercase text-blue-500 mb-1.5 tracking-widest">
+                      {gpt.competitorTable.titan} ✦
+                    </p>
+                    <p className="text-xs text-blue-900 font-semibold leading-relaxed">{row.titan}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       )}

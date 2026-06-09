@@ -122,8 +122,39 @@ export const Layout: React.FC<LayoutProps> = ({ children, lang, setLang }) => {
       </main>
 
       {/* Mobile Bottom Navigation */}
-      {/* Mobile Bottom Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-2xl border-t border-slate-200/50 pb-safe z-50 md:hidden">
+      <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-2xl border-t border-slate-200/50 pb-safe z-50 md:hidden">
+
+        {/* Slide-up More Drawer */}
+        {isMobileMenuOpen && (
+          <div className="border-b border-slate-100 bg-white px-4 py-4 grid grid-cols-3 gap-3">
+            {[
+              { to: '/getting-started', label: isRtl ? 'دليل البدء' : 'Guide', icon: '📖' },
+              { to: '/pitch', label: isRtl ? 'لماذا TitanEAM' : 'Why Us', icon: '📊' },
+              { to: '/fleet-roadmap', label: t.roadmap, icon: '🗓️' },
+              { to: '/titan-simulator', label: isRtl ? 'المحاكي' : 'Simulator', icon: '🎮' },
+              { to: '/brainstorm', label: isRtl ? 'العصف الذهني' : 'AI Brain', icon: '💡' },
+              { to: '/integrity-forecast', label: isRtl ? 'النزاهة' : 'Integrity', icon: '🔍' },
+              { to: '/audit-log', label: t.auditLog, icon: '📝' },
+              { to: '/corruption-control', label: isRtl ? 'مكافحة الفساد' : 'Anti-Fraud', icon: '🛡️' },
+              { to: '/parts', label: t.parts, icon: '⚙️' },
+            ].map(item => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={`flex flex-col items-center gap-1.5 py-3 px-2 rounded-2xl transition-all active:scale-95 ${
+                  location.pathname === item.to
+                    ? 'bg-blue-50 text-blue-600'
+                    : 'text-slate-500 hover:bg-slate-50'
+                }`}
+              >
+                <span className="text-xl">{item.icon}</span>
+                <span className="text-[10px] font-bold text-center leading-tight">{item.label}</span>
+              </Link>
+            ))}
+          </div>
+        )}
+
+        {/* Bottom Tab Bar */}
         <div className="flex justify-between items-end px-2 h-[4.5rem] relative">
 
           <Link
@@ -148,7 +179,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, lang, setLang }) => {
             <span className={`text-[10px] font-medium tracking-wide transition-all ${location.pathname === '/fleet-board' ? 'font-bold opacity-100' : 'opacity-70 group-hover:opacity-100'}`}>{t.fleetBoard}</span>
           </Link>
 
-          {/* Central Scan/Action Button - Proportional Floating FAB */}
+          {/* Central FAB → Assets */}
           <div className="flex-1 flex justify-center relative -top-6">
             <Link to="/assets" className="group relative w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-blue-500/30 transition-transform active:scale-95 hover:-translate-y-1">
               <div className="absolute inset-0 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-full"></div>
@@ -173,7 +204,10 @@ export const Layout: React.FC<LayoutProps> = ({ children, lang, setLang }) => {
             className={`flex-1 flex flex-col items-center justify-center gap-1.5 pb-2 transition-all duration-300 group ${isMobileMenuOpen ? 'text-blue-600' : 'text-slate-400 hover:text-slate-600'}`}
           >
             <div className={`relative transition-all duration-300 ${isMobileMenuOpen ? '-translate-y-1' : ''}`}>
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={isMobileMenuOpen ? 2.5 : 2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+              {isMobileMenuOpen
+                ? <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                : <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+              }
               {isMobileMenuOpen && <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-blue-600 rounded-full"></span>}
             </div>
             <span className={`text-[10px] font-medium tracking-wide transition-all ${isMobileMenuOpen ? 'font-bold opacity-100' : 'opacity-70 group-hover:opacity-100'}`}>{isRtl ? 'المزيد' : 'More'}</span>

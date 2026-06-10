@@ -41,7 +41,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, lang, setLang }) => {
   }, [location]);
 
   return (
-    <div className="flex min-h-screen bg-[#f8fafc]" dir={isRtl ? 'rtl' : 'ltr'}>
+    <div className="flex min-h-screen bg-[#f8fafc] overflow-x-hidden" dir={isRtl ? 'rtl' : 'ltr'}>
       {/* Mobile Backdrop */}
       {isMobileMenuOpen && (
         <div
@@ -112,11 +112,11 @@ export const Layout: React.FC<LayoutProps> = ({ children, lang, setLang }) => {
 
       {/* Main Content */}
       <main className={`
-        flex-1 p-4 md:p-10 transition-all duration-300
+        flex-1 p-4 md:p-10 transition-all duration-300 overflow-x-hidden w-full min-w-0
         ${isRtl ? 'md:mr-[260px]' : 'md:ml-[260px]'}
         pb-32 md:pb-10 min-h-screen
       `}>
-        <div className="max-w-7xl mx-auto animate-in fade-in slide-in-from-bottom-2 duration-500">
+        <div className="max-w-7xl mx-auto w-full min-w-0 overflow-x-hidden animate-in fade-in slide-in-from-bottom-2 duration-500">
           {children}
         </div>
       </main>

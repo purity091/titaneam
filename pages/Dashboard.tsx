@@ -68,7 +68,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ assets, lang }) => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
-        <div className="lg:col-span-2 bg-white p-5 md:p-8 rounded-3xl shadow-sm border border-slate-100">
+        <div className="lg:col-span-2 bg-white p-5 md:p-8 rounded-3xl shadow-sm border border-slate-100 min-w-0">
           <div className="flex items-center justify-between mb-8">
             <h3 className="text-lg font-bold text-slate-900">{t.usageVsLimit}</h3>
             <div className="flex items-center space-x-2 rtl:space-x-reverse">
@@ -88,7 +88,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ assets, lang }) => {
                 />
                 <Bar dataKey="hours" fill="url(#colorUsage)" radius={[6, 6, 0, 0]} barSize={32}>
                   <defs>
-                    <linearGradient id="colorUsage" x1="0" y1="0" x2="0" y2="1">
+                     <linearGradient id="colorUsage" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="5%" stopColor="#3b82f6" stopOpacity={1} />
                       <stop offset="95%" stopColor="#6366f1" stopOpacity={1} />
                     </linearGradient>
@@ -99,7 +99,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ assets, lang }) => {
           </div>
         </div>
 
-        <div className="bg-white p-5 md:p-8 rounded-3xl shadow-sm border border-slate-100 flex flex-col">
+        <div className="bg-white p-5 md:p-8 rounded-3xl shadow-sm border border-slate-100 flex flex-col min-w-0">
           <h3 className="text-lg font-bold text-slate-900 mb-8">{t.statusBreakdown}</h3>
           <div className="flex-1 flex flex-col justify-center items-center">
             <div className="h-56 w-full">

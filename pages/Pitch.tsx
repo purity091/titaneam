@@ -63,6 +63,22 @@ export const Pitch: React.FC<PitchProps> = ({ lang }) => {
       opPurpose: "Operational Purpose",
       underTech: "Underlying Technology",
       finBenefit: "Financial Benefit",
+      calculatorTitle: "ROI Savings Calculator",
+      calculatorSubtitle: "Calculate your estimated annual savings when switching from traditional maintenance to TitanEAM.",
+      sliderFleet: "Fleet Size (Number of Assets)",
+      sliderRepair: "Average Corrective Repair Cost ($)",
+      sliderDowntime: "Average Downtime Hours Per Asset / Year",
+      annualSavings: "Annual Estimated Savings",
+      tradExpense: "Traditional Estimated Cost",
+      titanExpense: "TitanEAM Estimated Cost (incl. software)",
+      savingsNotice: "This estimation is based on average industrial EAM metrics (84% corrective failure reduction and 75% downtime reduction). Actual results may vary.",
+      demoTitle: "Request a Customized Enterprise Demo",
+      demoSubtitle: "Speak with our technical advisors to design a custom pilot for your fleet and worksites.",
+      successMsg: "Thank you for reaching out. A TitanEAM integration expert will contact you within 24 hours with a customized operational roadmap.",
+      labelCompany: "Company Name",
+      labelContact: "Contact Name",
+      labelEmail: "Business Email",
+      submitBtn: "Schedule Technical Demo",
       competitorTable: {
         feature: "Feature / Dimension",
         titan: "TitanEAM",
@@ -206,6 +222,22 @@ export const Pitch: React.FC<PitchProps> = ({ lang }) => {
       opPurpose: "الغرض التشغيلي للقسم",
       underTech: "التقنية البرمجية المستخدمة",
       finBenefit: "العائد التشغيلي والمالي (ROI)",
+      calculatorTitle: "حاسبة وفورات التشغيل (ROI)",
+      calculatorSubtitle: "احسب القيمة التقريبية للوفورات السنوية عند الانتقال من الصيانة التقليدية إلى منصة TitanEAM.",
+      sliderFleet: "حجم الأسطول (عدد المعدات والأصول)",
+      sliderRepair: "متوسط تكلفة الإصلاح الاضطراري الواحد ($)",
+      sliderDowntime: "متوسط ساعات التوقف السنوية لكل معدة",
+      annualSavings: "الوفورات السنوية المتوقعة",
+      tradExpense: "التكلفة التقديرية بالأساليب التقليدية",
+      titanExpense: "التكلفة التقديرية باستخدام TitanEAM (شاملاً رخصة البرنامج)",
+      savingsNotice: "هذه التقديرات مبنية على مؤشرات الكفاءة القياسية لـ TitanEAM (تقليص الأعطال بنسبة 84% وتخفيض توقف الأصول بنسبة 75%). قد تختلف النتائج الفعلية.",
+      demoTitle: "طلب عرض توضيحي مخصص للمؤسسة",
+      demoSubtitle: "تواصل مع مستشارينا الفنيين لتصميم فترة تجريبية مخصصة لأسطولك ومواقع عملك.",
+      successMsg: "شكراً لتواصلك معنا. سيقوم أحد خبراء التكامل في TitanEAM بالاتصال بك خلال 24 ساعة لتقديم خطة عمل مخصصة.",
+      labelCompany: "اسم الشركة / المؤسسة",
+      labelContact: "اسم مسؤول التواصل",
+      labelEmail: "البريد الإلكتروني للعمل",
+      submitBtn: "جدولة عرض فني متكامل",
       competitorTable: {
         feature: "ميزة المقارنة / المعيار الفني",
         titan: "منصة TitanEAM",
@@ -341,9 +373,9 @@ export const Pitch: React.FC<PitchProps> = ({ lang }) => {
   const pt = localTranslations;
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-12 w-full min-w-0">
       {/* 1. HERO SECTION */}
-      <div className="relative bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 rounded-[2.5rem] p-8 md:p-14 text-white overflow-hidden shadow-2xl border border-indigo-900/50">
+      <div className="relative bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 rounded-3xl md:rounded-[2.5rem] p-5 md:p-14 text-white overflow-hidden shadow-2xl border border-indigo-900/50">
         <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -353,7 +385,7 @@ export const Pitch: React.FC<PitchProps> = ({ lang }) => {
             <span>{isRtl ? 'بوابة المقارنة والحوكمة الشاملة' : 'Enterprise Evaluation Portal'}</span>
           </div>
 
-          <h1 className="text-3xl md:text-5xl font-black tracking-tight leading-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl font-black tracking-tight leading-tight break-words">
             {gpt.title}
           </h1>
           <p className="text-slate-300 font-medium text-base md:text-lg max-w-3xl leading-relaxed">
@@ -420,18 +452,18 @@ export const Pitch: React.FC<PitchProps> = ({ lang }) => {
                   <div className="space-y-3 pt-2">
                     <div className="space-y-1">
                       <p className="text-[10px] font-bold uppercase text-slate-400 tracking-wider">{gpt.opPurpose}</p>
-                      <p className="text-slate-600 text-xs leading-relaxed font-medium">{item.purpose}</p>
+                      <p className="text-slate-600 text-xs leading-relaxed font-medium break-words">{item.purpose}</p>
                     </div>
                     <div className="space-y-1">
                       <p className="text-[10px] font-bold uppercase text-slate-400 tracking-wider">{gpt.underTech}</p>
-                      <p className="text-slate-500 text-xs leading-relaxed font-mono font-medium">{item.tech}</p>
+                      <p className="text-slate-500 text-xs leading-relaxed font-mono font-medium break-words">{item.tech}</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-slate-50">
                   <p className="text-[10px] font-bold uppercase text-emerald-600 tracking-wider mb-1">{gpt.finBenefit}</p>
-                  <p className="text-slate-700 text-xs font-semibold leading-relaxed">{item.benefit}</p>
+                  <p className="text-slate-700 text-xs font-semibold leading-relaxed break-words">{item.benefit}</p>
                 </div>
               </div>
             ))}
@@ -470,19 +502,19 @@ export const Pitch: React.FC<PitchProps> = ({ lang }) => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
                   <div className="p-4 bg-blue-50/30">
                     <p className="text-[9px] font-bold uppercase text-blue-500 mb-1.5 tracking-widest">{gpt.competitorTable.titan}</p>
-                    <p className="text-xs text-blue-900 font-semibold leading-relaxed">{row.titan}</p>
+                    <p className="text-xs text-blue-900 font-semibold leading-relaxed break-words">{row.titan}</p>
                   </div>
                   <div className="p-4">
                     <p className="text-[9px] font-bold uppercase text-slate-400 mb-1.5 tracking-widest">{gpt.competitorTable.maximo}</p>
-                    <p className="text-xs text-slate-500 leading-relaxed">{row.maximo}</p>
+                    <p className="text-xs text-slate-500 leading-relaxed break-words">{row.maximo}</p>
                   </div>
                   <div className="p-4">
                     <p className="text-[9px] font-bold uppercase text-slate-400 mb-1.5 tracking-widest">{gpt.competitorTable.sap}</p>
-                    <p className="text-xs text-slate-500 leading-relaxed">{row.sap}</p>
+                    <p className="text-xs text-slate-500 leading-relaxed break-words">{row.sap}</p>
                   </div>
                   <div className="p-4 bg-slate-50/50">
                     <p className="text-[9px] font-bold uppercase text-slate-300 mb-1.5 tracking-widest">{gpt.competitorTable.legacy}</p>
-                    <p className="text-xs text-slate-400 leading-relaxed">{row.legacy}</p>
+                    <p className="text-xs text-slate-400 leading-relaxed break-words">{row.legacy}</p>
                   </div>
                 </div>
               </div>
@@ -546,7 +578,7 @@ export const Pitch: React.FC<PitchProps> = ({ lang }) => {
             <div className="lg:col-span-5 bg-gradient-to-br from-slate-900 to-indigo-950 text-white p-6 md:p-8 rounded-3xl flex flex-col justify-between border border-slate-800 shadow-xl">
               <div>
                 <p className="text-emerald-400 font-bold uppercase tracking-widest text-[10px] mb-1">{pt[lang].annualSavings}</p>
-                <h3 className="text-4xl md:text-5xl font-black font-mono text-emerald-400 leading-none">
+                <h3 className="text-2xl sm:text-3xl md:text-5xl font-black font-mono text-emerald-400 leading-none break-all">
                   ${totalSavings.toLocaleString(undefined, { maximumFractionDigits: 0 })}
                 </h3>
                 <p className="text-slate-400 text-xs font-semibold mt-2">
@@ -595,13 +627,13 @@ export const Pitch: React.FC<PitchProps> = ({ lang }) => {
                     <p className="text-[9px] font-bold uppercase text-slate-400 mb-1.5 tracking-widest">
                       {isRtl ? 'الأنظمة التقليدية' : 'Traditional Systems'}
                     </p>
-                    <p className="text-xs text-slate-600 leading-relaxed">{row.maximo}</p>
+                    <p className="text-xs text-slate-600 leading-relaxed break-words">{row.maximo}</p>
                   </div>
                   <div className="p-4 bg-blue-50/20">
                     <p className="text-[9px] font-bold uppercase text-blue-500 mb-1.5 tracking-widest">
                       {gpt.competitorTable.titan} ✦
                     </p>
-                    <p className="text-xs text-blue-900 font-semibold leading-relaxed">{row.titan}</p>
+                    <p className="text-xs text-blue-900 font-semibold leading-relaxed break-words">{row.titan}</p>
                   </div>
                 </div>
               </div>
